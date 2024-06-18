@@ -8,21 +8,21 @@ from gluonts.torch.distributions import DistributionOutput, StudentTOutput
 from gluonts.torch.modules.feature import FeatureEmbedder
 from gluonts.torch.util import lagged_sequence_values, unsqueeze_expand
 
-from pyraformer.Layers import EncoderLayer, Predictor, Decoder
-from pyraformer.Layers import (
+from .pyraformer.Layers import EncoderLayer, Predictor, Decoder
+from .pyraformer.Layers import (
     Bottleneck_Construct,
     Conv_Construct,
     MaxPooling_Construct,
     AvgPooling_Construct,
 )
-from pyraformer.Layers import (
+from .pyraformer.Layers import (
     get_mask,
     refer_points,
     get_k_q,
     get_q_k,
     get_subsequent_mask,
 )
-from pyraformer.embed import SingleStepEmbedding, DataEmbedding, CustomEmbedding
+from .pyraformer.embed import SingleStepEmbedding, DataEmbedding, CustomEmbedding
 import random
 
 class EncoderSS(nn.Module):

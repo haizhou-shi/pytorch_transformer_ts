@@ -28,8 +28,8 @@ from gluonts.transform import (
 )
 from gluonts.transform.sampler import InstanceSampler
 
-from lightning_module import InformerLightningModule
-from module import InformerModel
+from .lightning_module import InformerLightningModule
+from .module import InformerModel
 
 PREDICTION_INPUT_NAMES = [
     "feat_static_cat",

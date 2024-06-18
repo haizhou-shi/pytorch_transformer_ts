@@ -7,9 +7,9 @@ from gluonts.torch.util import take_last, repeat_along_dim
 from module import PyraformerSSModel
 # from module import PyraformerLRModel
 # from tools import SingleStepLoss as LossFactory
-from tools import AE_loss
+from .tools import AE_loss
 from gluonts.itertools import prod
-from aug import freq_mask, freq_mix
+from .aug import freq_mask, freq_mix
 import random
 
 class PyraformerLightningModule(pl.LightningModule):

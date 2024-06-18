@@ -29,10 +29,10 @@ from gluonts.transform import (
 )
 from gluonts.transform.sampler import InstanceSampler
 
-from lightning_module import PyraformerLightningModule
+from .lightning_module import PyraformerLightningModule
 # from module import PyraformerSSModel
 # from module import PyraformerLRModel
-from tools import SingleStepLoss as LossFactory
+from .tools import SingleStepLoss as LossFactory
 from torch.utils.data.sampler import RandomSampler
 
 # PREDICTION_INPUT_NAMES = [

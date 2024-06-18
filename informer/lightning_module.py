@@ -3,7 +3,7 @@ import torch
 from gluonts.torch.modules.loss import DistributionLoss, NegativeLogLikelihood
 from gluonts.torch.util import weighted_average
 
-from module import InformerModel
+from .module import InformerModel
 
 
 class InformerLightningModule(pl.LightningModule):

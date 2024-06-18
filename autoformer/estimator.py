@@ -28,8 +28,8 @@ from gluonts.transform import (
 )
 from gluonts.transform.sampler import InstanceSampler
 
-from lightning_module import AutoformerLightningModule
-from module import AutoformerModel
+from .lightning_module import AutoformerLightningModule
+from .module import AutoformerModel
 
 PREDICTION_INPUT_NAMES = [
     "feat_static_cat",
