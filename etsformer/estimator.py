@@ -77,6 +77,8 @@ class ETSformerEstimator(PyTorchLightningEstimator):
         trainer_kwargs: Optional[Dict[str, Any]] = dict(),
         train_sampler: Optional[InstanceSampler] = None,
         validation_sampler: Optional[InstanceSampler] = None,
+        lr: float = 1e-3,
+        weight_decay: float = 1e-8,
     ) -> None:
         trainer_kwargs = {
             "max_epochs": 100,
@@ -99,6 +101,9 @@ class ETSformerEstimator(PyTorchLightningEstimator):
         self.k_largest_amplitudes = k_largest_amplitudes
         self.dropout = dropout
         self.embed_kernel_size = embed_kernel_size
+        
+        self.lr = lr
+        self.weight_decay = weight_decay
 
         self.num_feat_dynamic_real = num_feat_dynamic_real
         self.num_feat_static_cat = num_feat_static_cat
@@ -292,4 +297,9 @@ class ETSformerEstimator(PyTorchLightningEstimator):
             num_parallel_samples=self.num_parallel_samples,
         )
 
-        return ETSformerLightningModule(model=model, loss=self.loss)
+        return ETSformerLightningModule(
+            model=model, 
+            loss=self.loss,
+            lr=self.lr,
+            weight_decay=self.weight_decay,
+        )

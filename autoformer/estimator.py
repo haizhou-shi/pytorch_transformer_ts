@@ -79,6 +79,8 @@ class AutoformerEstimator(PyTorchLightningEstimator):
         trainer_kwargs: Optional[Dict[str, Any]] = dict(),
         train_sampler: Optional[InstanceSampler] = None,
         validation_sampler: Optional[InstanceSampler] = None,
+        lr: float = 1e-3,
+        weight_decay: float = 1e-8,
     ) -> None:
         trainer_kwargs = {
             "max_epochs": 100,
@@ -103,6 +105,9 @@ class AutoformerEstimator(PyTorchLightningEstimator):
         self.dropout = dropout
         self.factor = factor
         self.moving_avg = moving_avg
+
+        self.lr = lr
+        self.weight_decay = weight_decay
 
         self.num_feat_dynamic_real = num_feat_dynamic_real
         self.num_feat_static_cat = num_feat_static_cat
@@ -298,4 +303,9 @@ class AutoformerEstimator(PyTorchLightningEstimator):
             num_parallel_samples=self.num_parallel_samples,
         )
 
-        return AutoformerLightningModule(model=model, loss=self.loss)
+        return AutoformerLightningModule(
+            model=model, 
+            loss=self.loss,
+            lr=self.lr,
+            weight_decay=self.weight_decay,
+        )
